@@ -1,7 +1,4 @@
-using System;
 using Xunit;
-
-using HelloWorldApp;
  
 namespace HelloWorldApp.Tests
 {
