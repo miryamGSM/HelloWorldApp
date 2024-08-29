@@ -7,7 +7,7 @@ namespace HelloWorldApp.Tests
         [Fact]
         public void TestHelloWorldOutput()
         {
-            using (var sw = new System.IO.StringWriter())
+            using (var sw = new StringWriter())
             {
                 Console.SetOut(sw);
                 Program.Main(new string[] { });
