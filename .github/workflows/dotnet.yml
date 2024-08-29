@@ -20,10 +20,10 @@ jobs:
         dotnet-version: '7.x'
 
     - name: Restore dependencies
-      run: dotnet restore HelloWorldApp
+      run: dotnet restore
 
     - name: Build
-      run: dotnet build HelloWorldApp --no-restore
+      run: dotnet build --no-restore
 
     - name: Run tests
       run: dotnet test --no-build --verbosity normal
