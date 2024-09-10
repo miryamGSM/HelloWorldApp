@@ -10,6 +10,7 @@ namespace HelloWorldApp.Tests
         [Fact]
         public void TestHelloWorldOutput()
         {
+			// comment
             using (var sw = new System.IO.StringWriter())
             {
                 Console.SetOut(sw);
