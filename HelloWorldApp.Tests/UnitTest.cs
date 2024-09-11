@@ -7,6 +7,7 @@ namespace HelloWorldApp.Tests
         [Fact]
         public void TestHelloWorldOutput()
         {
+      			// comment
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
@@ -15,6 +16,7 @@ namespace HelloWorldApp.Tests
                 string result = sw.ToString().Trim();
                 Assert.Equal("Hello, World!", result);
             }
+			      // sub-branch comment
         }
     }
 }
