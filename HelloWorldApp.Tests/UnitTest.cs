@@ -1,7 +1,4 @@
-using System;
 using Xunit;
-
-using HelloWorldApp;
  
 namespace HelloWorldApp.Tests
 {
@@ -10,16 +7,16 @@ namespace HelloWorldApp.Tests
         [Fact]
         public void TestHelloWorldOutput()
         {
-			// comment
-            using (var sw = new System.IO.StringWriter())
+      			// comment
+            using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
                 Program.Main(new string[] { });
                 
-                var result = sw.ToString().Trim();
+                string result = sw.ToString().Trim();
                 Assert.Equal("Hello, World!", result);
             }
-			// sub-branch comment
+			      // sub-branch comment
         }
     }
 }
