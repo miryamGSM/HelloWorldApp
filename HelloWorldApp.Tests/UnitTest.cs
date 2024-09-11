@@ -19,6 +19,7 @@ namespace HelloWorldApp.Tests
                 var result = sw.ToString().Trim();
                 Assert.Equal("Hello, World!", result);
             }
+			// sub-branch comment
         }
     }
 }
