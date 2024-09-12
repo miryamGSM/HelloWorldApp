@@ -6,7 +6,9 @@ namespace HelloWorldApp
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+			// we need to implement the new featue here!!
+
+            Console.WriteLine("Hello, World!")
         }
     }
 }
