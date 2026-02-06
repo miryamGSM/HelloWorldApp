@@ -36,6 +36,9 @@ jobs:
             /p:CoverletOutput=./TestResults/ \
             /p:CoverletOutputFormat=opencover
 
+      - name: Debug coverage files
+        run: find . -name "*.opencover.xml"
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
