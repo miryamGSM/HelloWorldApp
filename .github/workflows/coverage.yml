@@ -33,7 +33,7 @@ jobs:
           dotnet test \
             --no-build \
             /p:CollectCoverage=true \
-            /p:CoverletOutput=./TestResults/ \
+            /p:CoverletOutput=./TestResults/coverage.opencover.xml \
             /p:CoverletOutputFormat=opencover
 
       - name: Debug coverage files
