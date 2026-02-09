@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
+
 jobs:
   coverage:
     name: Coverage
@@ -32,25 +38,15 @@ jobs:
             --results-directory ./TestResults \
             --logger "trx;LogFileName=test_results.trx"
 
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Publish test results
+        if: (!cancelled())
+        uses: EnricoMi/publish-unit-test-result-action@v2
         with:
-          name: Test Results
-          path: "**/TestResults/**/*.trx"
+          files: "**/TestResults/**/*.trx"
+          comment_mode: ${{ (github.event_name == 'pull_request') && 'always' || 'off' }}
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           files: "**/TestResults/*/coverage.cobertura.xml"
           fail_ci_if_error: true
-
-  upload_event_file:
-    name: Upload event file
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload event file
-        uses: actions/upload-artifact@v4
-        with:
-          name: Event file
-          path: ${{ github.event_path }}
