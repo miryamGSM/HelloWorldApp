@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
+
 jobs:
   coverage:
     name: Coverage
@@ -29,7 +35,15 @@ jobs:
         run: |
           dotnet test \
             --collect:"XPlat Code Coverage" \
-            --results-directory ./TestResults
+            --results-directory ./TestResults \
+            --logger "trx;LogFileName=test_results.trx"
+
+      - name: Publish test results
+        if: (!cancelled())
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: "**/TestResults/**/*.trx"
+          comment_mode: ${{ (github.event_name == 'pull_request') && 'always' || 'off' }}
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
