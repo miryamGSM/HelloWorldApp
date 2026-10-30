@@ -2,6 +2,7 @@ using Xunit;
  
 namespace HelloWorldApp.Tests
 {
+	// class comment
     public class UnitTest
     {
         [Fact]
